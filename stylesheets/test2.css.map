@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAgBA,CAAE;EACA,SAAS,EAAE,IAAI;EACf,gBAAgB,EAAC,OAAO;EAbxB,iDAA8E;IAWhF,CAAE;MAME,SAAS,EAAE,IAAI;MAClB,gBAAgB,EAAC,OAAO;EAZvB,0BAAsC;IAKxC,CAAE;MAWE,SAAS,EAAE,IAAI;MAClB,gBAAgB,EAAC,OAAO",
+"sources": ["sass/test2.scss"],
+"names": [],
+"file": "test2.css"
+}

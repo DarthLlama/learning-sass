@@ -1,0 +1,125 @@
+.sidebar {
+    @if ($border_thickness <=30) {
+        background-color:red;
+    } @else {
+        background-color:yellow;
+    }
+}
+
+#mypara {
+	@include customBorder(3px, blue, solid);
+	color:$myColour2;
+	font-size: $myFontSize;
+	padding: $basePadding;
+	&:hover {
+    		color: darken($myColour2,50%);
+  	 	}
+}
+
+h1 {
+	color: $myColour1;
+	padding: 15px 0;
+	line-height: 1;
+	font: {
+		size: 54px;
+		family: Jubilat, Georgia, serif;
+		weight: bold;
+		}
+    @include customBorder(3px, pink, dotted);
+}
+
+
+h2 {
+    color: lighten($myColour1, 30%);
+    @include customBorder;
+}
+
+h3 {    
+    color: darken($myColour1, 30%);
+    @include customBorder(5px, orange);
+}
+
+h4 {
+    color: greyscale($myColour1);
+    @include customBorder($color:$myColour1);
+}
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+    
+	p {
+		font-family:Times;
+	}
+    
+    p#mypara {
+		font-family: "Courier New";
+	}
+}
+
+#mypara:after {
+content: $myStringVar;
+}
+
+.btn {
+    background-color: $myColour1;
+    color: invert($myColour1);
+    border: $baseThickness solid pink;
+    a {
+        font-weight: bold;
+        text-decoration: none;
+        &:hover {
+            color: pink;
+        }
+    }
+}
+.btn_highlight {
+    @extend .btn;
+        background-color: $myColour2;
+        color: invert($myColour2);
+}
+.btn3 {
+    @extend .btn;
+    background-color: $myColour3;
+    color: invert($myColour3);
+}
+
+header {
+    color: #274D87;
+    @include commonTraits;
+}
+
+footer {
+    color: #3264AF;
+    @include commonTraits;
+	@include break(0, 500px) {
+		display: none;
+	}
+}
+
+@include keyframe(fadeout) {
+    0% {
+        opacity: 1;
+    }
+ 
+    100% {
+        opacity: 0;
+    }
+}
+
+#myList:hover {
+  @include animation(fadeout, 1s, ease-out, infinite)
+}
+
+header {@include backImage('../images/sea.jpg', center center);}
+
+.grid {    
+@include clearfix;    
+.item {        
+float: left;       
+@include imagegrid(3, 2%);    
+}    
+img {        
+display: block;        
+border-radius: nth($roundness, 1);        
+max-width: 100%;    
+}}

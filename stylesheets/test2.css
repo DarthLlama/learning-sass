@@ -1,0 +1,13 @@
+p {
+  font-size: 12px;
+  background-color: #9933FF; }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    p {
+      font-size: 18px;
+      background-color: #FF0066; } }
+  @media (min-width: 1024px) {
+    p {
+      font-size: 26px;
+      background-color: #009933; } }
+
+/*# sourceMappingURL=test2.css.map */

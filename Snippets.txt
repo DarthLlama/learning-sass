@@ -1,0 +1,278 @@
+=====================================================
+
+
+Comments
+
+
+
+
+=====================================================
+
+/* This is a multi-line comment that will appear in the final .css file. */
+
+/*! This is a multi-line comment that will appear in the final .css file. Even in compressed style. */
+
+// This is a single-line comment.
+// Single-line comments are removed from the .css file.
+// So you can say whatever you'd like here.
+
+
+
+
+=====================================================
+
+
+Variables
+
+
+
+
+
+=====================================================
+
+
+$myColour1: red;                  // named colour value
+$myColour2: #C8A3FF;               // hex colour value
+$myColour3: #C8A3FF; 
+$myStringVar: " with an appended string";   // string variable 
+$myFontSize: 18px;                          // numeric value
+$thinBorder: 1px solid $myColour;           // multi-value variable
+$paddingVar: 15px 15px 15px 15px;           // multi-value variable
+
+h1, h2 {    
+color: $myColour1;
+}
+
+#mypara {
+font-size: $myFontSize;
+border: $thinBorder;
+padding: $paddingVar;
+}
+
+#mypara:after {
+content: $myStringVar;
+}
+
+=====================================================
+
+
+Operators
+
+
+
+
+=====================================================
+
+
+$basePadding:10px;
+$baseThickness:4px;
+$gender:boy;
+
+#mypara {
+color:$myColour3;
+font-size: $myFontSize;
+border: $baseThickness solid $myColour1;
+padding: $basePadding;
+}
+
+________________________________________________________
+
+$border_thickness:1px;
+$thicker: $border_thickness * 5;
+
+.sidebar {
+@if (border_thickness <=1) {
+background-color:red;
+} @else {
+background-color:yellow;
+}
+}
+
+=====================================================
+
+
+Nesting
+
+
+
+
+=====================================================
+
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	p {
+		font-family:Times;
+	}
+    p#mypara {
+		font-family: "Courier New";
+	}
+}
+
+#mypara {
+color:$myColour2;
+font-size: $myFontSize;
+border: $baseThickness solid $myColour1;
+padding: $basePadding;
+}
+
+=====================================================
+
+
+Nesting Name Space
+
+
+
+
+=====================================================
+
+
+h1 {
+	color: $myColour1;
+	padding: 15px 0;
+	line-height: 1;
+	font: {
+		size: 54px;
+		family: Jubilat, Georgia, serif;
+		weight: bold;
+		}
+}
+
+=====================================================
+
+
+Nesting Name Space - Background
+
+
+
+
+=====================================================
+
+
+
+#pagecontent 
+{ 
+width: 800px; 
+margin: 50px auto; 
+padding: 20px; 
+background: rgba(255,255,255,.8); 
+box-shadow: 0 0 20px black; 
+}
+		
+html { 
+background: {
+	color: #06c;
+    image: url(../images/sea.jpg);
+  repeat: no-repeat;
+  position: center center;
+  attachment:fixed;
+  size:cover;
+}
+}
+
+=====================================================
+
+
+Mixins
+
+
+
+
+=====================================================
+
+
+@mixin commonTraits 
+{
+	border-radius: 10px;
+    	border: 1px solid green;
+    	padding: 10px;
+	background-color:white;
+}
+
+header {
+    color: #274D87;
+    @include commonTraits;
+}
+
+footer {
+    color: #3264AF;
+    @include commonTraits;
+}
+
+=====================================================
+
+
+Mixins with arguments
+
+
+
+
+=====================================================
+
+
+@mixin customBorder ($width, $color, $style) {
+	border: {
+		width: $width;
+		color: $color;
+        	style: $style;
+    	}
+}
+
+#mypara {
+	@include customBorder(3px, blue, dotted);
+	color:$myColour2;
+	font-size: $myFontSize;
+	padding: $basePadding;
+	&:hover {
+    		color: darken($myColour2,50%);
+  	 	}
+}
+
+=====================================================
+
+
+Mixins - Vendor Extensions
+
+
+
+
+=====================================================
+
+
+@mixin keyframe ($animation_name) {
+    @-webkit-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+
+@mixin animation ($animation, $duration, $transition, $iteration) {
+  -webkit-animation-name: $animation;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-timing-function: $transition;
+  -webkit-animation-iteration-count: $iteration;
+  animation-name: $animation;
+  animation-duration: $duration;
+  animation-timing-function: $transition;
+  animation-iteration-count: $iteration;
+}
+
+@include keyframe(fadeout) {
+    0% {
+        opacity: 1;
+    }
+ 
+    100% {
+        opacity: 0;
+    }
+}
+
+#list1:hover {
+  @include animation(fadeout, 1s, ease-out, infinite)
+}
+
+
+

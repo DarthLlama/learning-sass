@@ -1,0 +1,17 @@
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$myColour1: green;                  // named colour value
+$myColour2: #C8A3FF;               // hex colour value
+$myStringVar: " with an appended string";   // string variable 
+$myFontSize: 18px;                          // numeric value
+$thinBorder: 1px solid $myColour1;           // multi-value variable
+$paddingVar: 15px 15px 15px 15px;           // multi-value variable
+$basePadding:10px;
+$baseThickness:4px;
+$gender:boy;
+$myColour3: if($gender=="boy",#00f,#f00); 
+
+$border_thickness:1px;
+$thicker: $border_thickness * 5;
+
+$roundness: 40px 0 10px 0;

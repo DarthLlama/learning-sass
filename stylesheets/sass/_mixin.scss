@@ -1,0 +1,95 @@
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin commonTraits 
+{
+	border-radius: 10px;
+    	border: 1px solid green;
+    	padding: 10px;
+	background-color:white;
+}
+
+@mixin customBorder ($width:1px, $color:green, $style:dotted) {
+	border: {
+		width: $width;
+		color: $color;
+        	style: $style;
+    	}
+}
+
+@mixin keyframe ($animation_name) {
+    @-webkit-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+
+@mixin animation ($animation, $duration, $transition, $iteration) {
+  -webkit-animation-name: $animation;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-timing-function: $transition;
+  -webkit-animation-iteration-count: $iteration;
+  animation-name: $animation;
+  animation-duration: $duration;
+  animation-timing-function: $transition;
+  animation-iteration-count: $iteration;
+}
+
+@mixin backImage($image,$height: 20vh,$bgPos: center center)  {
+	background: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.6)),url($image);
+	background-repeat: no-repeat;
+	background-position: $bgPos;
+	background-size: cover;
+	height: $height;
+}
+
+@mixin clearfix {    
+&:before,    
+&:after {        
+content: '';        
+display: table;    
+}    
+&:after 
+{        
+clear: both;    
+}}
+
+@mixin imagegrid($qty, $margin) {
+	width: ((100% - (($qty - 1) * $margin))/$qty);
+	
+	&:nth-child(n){        
+		margin-right: $margin;        
+		margin-bottom: $margin;    
+	}
+
+	&:nth-child(#{$qty}n) {
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+}
+
+@mixin break($args...) {
+	@if length($args) == 1 {
+		@media (min-width: nth($args, 1)) {
+			@content;
+		}
+	}
+	
+	@if length($args) == 2 {
+		@media (min-width: nth($args, 1)) and (max-width: nth($args, 2)) {
+			@content;
+		}
+	}
+}
